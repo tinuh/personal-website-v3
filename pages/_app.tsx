@@ -2,7 +2,7 @@ import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
-import Background from '../components/background'
+import Background from '../components/Background'
 
 const config = {
   initialColorMode: "dark",
