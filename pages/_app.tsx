@@ -2,6 +2,7 @@ import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
+import Background from '../components/background'
 
 const config = {
   initialColorMode: "dark",
@@ -23,6 +24,7 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <Background />
       <Component {...pageProps} />
     </ChakraProvider>
   )
