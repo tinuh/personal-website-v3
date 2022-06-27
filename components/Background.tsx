@@ -12,13 +12,13 @@ export default function Background() {
   };
 
   return (
-		<div className = {styles.canvas}>
-			<Canvas>
-				<OrbitControls/>
-				<ambientLight intensity={0.5} />
-				<directionalLight position={[-2, 5, 2]} intensity={1} />
-				<Blob />
-			</Canvas>
-		</div>
+    <div className={styles.canvas}>
+      <Canvas>
+        <OrbitControls enableZoom={false} autoRotate={true} />
+        <ambientLight intensity={colorMode === "dark" ? 0.5 : 1} />
+        <directionalLight position={[-2, 5, 2]} intensity={1} />
+        <Blob />
+      </Canvas>
+    </div>
   );
 }
