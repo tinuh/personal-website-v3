@@ -8,7 +8,7 @@ export default function Background() {
   const { colorMode } = useColorMode();
 
   const styles = {
-    canvas: colorMode === "dark" ? "canvas-dark" : "canvas-light",
+    canvas: `canvas-${colorMode}`,
   };
 
   interface blobType {
@@ -17,10 +17,14 @@ export default function Background() {
   }
 
   const blobs: blobType[] = [
-    {pos: [Math.random() * 20 - 10, Math.random() * 20 - 10, Math.random() * 20 - 10], color: "#02a8a3"},
-    {pos: [Math.random() * 20 - 10, Math.random() * 20 - 10, Math.random() * 20 - 10], color: "#ed685f"},
-    {pos: [Math.random() * 20 - 10, Math.random() * 20 - 10, Math.random() * 20 - 10], color: "#9f4bc9"}
+    {pos: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5], color: "#02a8a3"},
+    {pos: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5], color: "#ed685f"},
+    {pos: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5], color: "#9f4bc9"}
   ]
+
+  React.useEffect(() => {
+    console.log(blobs)
+  }, [colorMode]);
 
   return (
     <div className={styles.canvas}>
