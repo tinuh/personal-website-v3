@@ -7,7 +7,7 @@ import Typewriter from 'typewriter-effect';
 const Home: NextPage = () => {
   return (
     <div>
-      <Heading>
+      <Heading pt = {10} textAlign={"center"}>
         <Typewriter
           onInit={(typewriter) => {
             typewriter.changeDelay(50).typeString("Hi, I'm Tinu Vanapamula").start();
