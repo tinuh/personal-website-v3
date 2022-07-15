@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
 import Background from '../components/Background'
+import Nav from '../components/Nav'
 
 const config = {
   initialColorMode: "dark",
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Background />
+      <Nav />
       <Component {...pageProps} />
     </ChakraProvider>
   )

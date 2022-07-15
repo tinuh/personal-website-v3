@@ -31,7 +31,7 @@ export default function Background() {
       <Canvas camera={{ fov: 25, position: [0, 15, 20]}}>
         <OrbitControls enableZoom={false} autoRotate={true} />
         <ambientLight intensity={colorMode === "dark" ? 0.5 : 1} />
-        <directionalLight position={[-2, 5, 2]} intensity={10} color="#FF4161"/>
+        <directionalLight position={[-2, 5, 2]} intensity={5} color="#FF4161"/>
 
         {blobs.map(({pos, color}) => 
           <Blob pos={pos} color={color}/>
