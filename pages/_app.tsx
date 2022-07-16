@@ -2,6 +2,8 @@ import '../styles/style.css'
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
+import { mode } from '@chakra-ui/theme-tools'
+import { Box } from '@chakra-ui/layout'
 import Background from '../components/Background'
 import Nav from '../components/Nav'
 
@@ -16,9 +18,18 @@ const fonts = {
   mono: "Menlo, monospace",
 };
 
+const styles = {
+  global: (props: any) => ({
+    body: {
+      bg: mode("#ffffff", "#000000")(props),
+    }
+  })
+}
+
 const theme = extendTheme({ 
   config, 
-  fonts, 
+  fonts,
+  styles
 });
 
 
@@ -27,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <Background />
       <Nav />
+      <Box p = {5} />
       <Component {...pageProps} />
     </ChakraProvider>
   )
