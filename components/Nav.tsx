@@ -30,11 +30,15 @@ const Ham = (props: { children?: React.ReactNode }) => {
 	const { children } = props;
 
 	return (
-		<div>
-			<Element href="/" name={"Home"} />
-			<Element href="/contact" name={"Contact"} />
+		<Flex px={3} py={2}>
+			<Text py={1} fontSize={'1.3rem'}>Tinu Vanapamula</Text>
+
+			<Box mr={0} ml="auto">
+
+				<ColorModeToggle ml={3} />
+			</Box>
 			{children}
-		</div>
+		</Flex>
 	)
 }
 

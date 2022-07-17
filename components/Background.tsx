@@ -12,8 +12,8 @@ export default function Background() {
   };
 
   interface blobType {
-    pos: number[];
-    color: string;
+    pos: number[]
+    color: string
   }
 
   const blobs: blobType[] = [
@@ -33,8 +33,8 @@ export default function Background() {
         <ambientLight intensity={colorMode === "dark" ? 0.5 : 1} />
         <directionalLight position={[-2, 5, 2]} intensity={5} color="#FF4161"/>
 
-        {blobs.map(({pos, color}) => 
-          <Blob pos={pos} color={color}/>
+        {blobs.map(({pos, color}, key) => 
+          <Blob pos={pos} color={color} key = {key}/>
         )}
       </Canvas>
     </div>
