@@ -2,23 +2,28 @@ import { Heading } from '@chakra-ui/layout'
 import React from 'react'
 import Typewriter from 'typewriter-effect'
 import { Textarea, useColorMode } from '@chakra-ui/react';
-import { FormControl, FormLabel, Input, FormErrorMessage } from '@chakra-ui/react';
+import { FormControl, FormLabel, Input, FormErrorMessage, Button } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/layout';
 import { useForm } from "react-hook-form";
 
 export default function Contact() {
+	interface formData {
+		name: string
+		email: string
+		message: string
+	}
+
 	const {colorMode} = useColorMode();
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm();
+	} = useForm<formData>();
 
-
-	const onSubmit = (data) => {
+	const onSubmit = (data: formData) => {
 		console.log(data);
-		
+		alert(JSON.stringify(data))
 		//Make a post request to cloudflare worker
 	};
 
@@ -32,13 +37,13 @@ export default function Contact() {
 				/>
 			</Heading>
 			<Box className='main-outer-box' mt = {10}>
-				<Box className={`main-inner-box-${colorMode}`} borderRadius='lg' p={10}>
+				<Box className={`main-inner-box-${colorMode}`} borderRadius='lg' p={10} textAlign="center">
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<FormControl>
 
 							<FormLabel htmlFor="name">Name</FormLabel>
 
-							<Input variant='filled' id="name" placeholder="Name" {...register("name", { required: true })} />
+							<Input variant='filled' id="name" placeholder="Name" {...register("name", { required: "Name is Required!" })} />
 
 							{errors.name && <FormErrorMessage>{errors.name.message}</FormErrorMessage>}
 
@@ -63,6 +68,10 @@ export default function Contact() {
 							{errors.message && <FormErrorMessage>{errors.message.message}</FormErrorMessage>}
 
 						</FormControl>
+						<Box m = {5} />
+						<Button type="submit">
+							Send
+						</Button>
 					</form>
 				</Box>
 			</Box>
