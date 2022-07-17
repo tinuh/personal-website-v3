@@ -13,11 +13,11 @@ const Home: NextPage = () => {
     <Box className='main-outer-box'>
       <Box className={`main-inner-box-${colorMode}`} borderRadius='lg' p={10}>
         <Stack direction={['column', 'row']} spacing={10}>
-          <Box textAlign="center" w = '100%'>
+          <Box textAlign="center" w = {['100%', '100%', '100%', '100%', '75%', '50%']}>
             <img style={{ "borderRadius": "50%" }} src="/assets/personal.jpeg" />
           </Box>
           <Box>
-            <Heading textAlign={"center"} mb={5} textShadow="0 0 #ffffff">
+            <Heading textAlign={"center"} mb={5}>
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter.changeDelay(50).typeString("Hey, I'm Tinu Vanapamula").start();
