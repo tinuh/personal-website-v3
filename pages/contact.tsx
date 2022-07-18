@@ -1,14 +1,15 @@
 import { Heading } from "@chakra-ui/layout";
 import React from "react";
 import Typewriter from "typewriter-effect";
-import { Textarea, useColorMode } from "@chakra-ui/react";
+import { Spinner, Textarea, useColorMode } from "@chakra-ui/react";
 import {
   FormControl,
   FormLabel,
   Input,
   FormErrorMessage,
   Button,
-	Stack
+	Stack,
+	useToast
 } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/layout";
 import { useForm } from "react-hook-form";
@@ -18,20 +19,54 @@ export default function Contact() {
     name: string;
     email: string;
     message: string;
+		ip?: string;
   }
 
   const { colorMode } = useColorMode();
+	const toast = useToast();
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+		reset,
+    formState: { errors, isSubmitting },
   } = useForm<formData>();
 
-  const onSubmit = (data: formData) => {
-    console.log(data);
-    alert(JSON.stringify(data));
+  const onSubmit = async (data: formData) => {
+    await console.log(data);
+    data.ip = "192.168.1.2"
+
     //Make a post request to cloudflare worker
+		await fetch('https://contact.tinu-personal.workers.dev', {
+			method: 'POST',
+			mode: "cors",
+      cache: "no-cache",
+			headers: {
+				'Content-Type': 'application/json',
+				"Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
+        "Access-Control-Max-Age": "86400"
+			},
+			referrerPolicy: "no-referrer",
+			body: JSON.stringify(data)
+		}).then(res => res.text()).then((res) => {
+			console.log(res);
+			toast({
+				title: "Success",
+				description: res,
+				status: "success",
+				isClosable: true,
+			})
+			reset();
+		}).catch((err) => {
+			console.log(err)
+			toast({
+				title: "Error",
+				description: err.message,
+				status: "error",
+				isClosable: true,
+			})
+		})
   };
 
   return (
@@ -106,7 +141,7 @@ export default function Contact() {
 							<FormErrorMessage>{errors.message?.message}</FormErrorMessage>
             </FormControl>
             <Box m={5} />
-            <Button type="submit">Send</Button>
+            <Button type="submit" disabled = {isSubmitting}>{isSubmitting ? <>Sending &nbsp; <Spinner/></> : "Send"}</Button>
           </form>
         </Box>
       </Box>
