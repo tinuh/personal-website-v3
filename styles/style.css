@@ -42,13 +42,13 @@ body {
 
 .main-inner-box-dark {
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 5px 5px 25px 10px rgba(255, 255, 255, 0.25), -5px -5px 25px 10px rgba(255, 255, 255, 0.22);
+  /* box-shadow: 5px 5px 25px 10px rgba(255, 255, 255, 0.25), -5px -5px 25px 10px rgba(255, 255, 255, 0.22); */
   backdrop-filter: blur(10px);
 }
 
 .main-inner-box-light {
   background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 5px 5px 25px 10px rgba(0, 0, 0, 0.25), -5px -5px 25px 10px rgba(0, 0, 0, 0.22);
+  /* box-shadow: 5px 5px 25px 10px rgba(0, 0, 0, 0.25), -5px -5px 25px 10px rgba(0, 0, 0, 0.22); */
   backdrop-filter: blur(10px);
 }
 
