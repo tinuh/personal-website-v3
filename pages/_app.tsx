@@ -32,11 +32,21 @@ const theme = extendTheme({
   styles
 });
 
+interface blobType {
+  pos: number[]
+  color: string
+}
+
+const blobs: blobType[] = [
+  {pos: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5], color: "#02a8a3"},
+  {pos: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5], color: "#ed685f"},
+  {pos: [Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5], color: "#9f4bc9"}
+]
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Background />
+      <Background blobs = {blobs} />
       <Nav />
       <Box p = {5} />
       <Component {...pageProps} />

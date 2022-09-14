@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         <Box className={`main-inner-box-${colorMode}`} borderRadius='lg' p={10}>
           <Stack direction={['column', 'row']} spacing={10}>
             <Box textAlign="center" w={['100%', '100%', '100%', '100%', '75%', '50%']}>
-              <img style={{ "borderRadius": "50%" }} src="/assets/personal.jpeg" />
+              <img style={{ "borderRadius": "50%" }} alt="Photo of Me" src="/assets/personal.jpeg" />
             </Box>
             <Box>
               <Heading textAlign={"center"} mb={5}>
@@ -31,8 +31,8 @@ const Home: NextPage = () => {
                 />
               </Heading>
               <Text fontSize={'1.3rem'}>
-                I'm a rising junior at Montgomery Blair High School interested in all things tech.
-                I'm interested in full-stack web development, engineering, server management, and a variety of other topics.
+                I&apos;m a rising junior at Montgomery Blair High School interested in all things tech.
+                I&apos;m interested in full-stack web development, engineering, server management, and a variety of other topics.
                 In my spare time, I like to play chess and work with my homelab.
               </Text>
             </Box>
