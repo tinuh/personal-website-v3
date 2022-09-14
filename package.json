@@ -9,19 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.2",
-    "@chakra-ui/react": "^2.2.1",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@react-three/drei": "^9.14.1",
-    "@react-three/fiber": "^8.0.27",
-    "framer-motion": "^6.3.13",
+    "@chakra-ui/icons": "^2.0.9",
+    "@chakra-ui/react": "^2.3.2",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@react-three/drei": "^9.30.1",
+    "@react-three/fiber": "^8.7.3",
+    "framer-motion": "^6.5.1",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.33.1",
+    "react-hook-form": "^7.35.0",
     "three": "^0.141.0",
-    "typewriter-effect": "^2.18.2"
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
     "@types/node": "18.0.0",
