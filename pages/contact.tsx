@@ -81,7 +81,7 @@ export default function Contact() {
       </Heading>
       <Box className="main-outer-box" mt={10}>
         <motion.div
-          initial={{ opacity: 0, borderRadius: '8px', scale: 0.95 }}
+          initial={{ opacity: 0, borderRadius: '8.5px', scale: 0.95 }}
           animate={{ opacity: 1, scale: 1, boxShadow: "5px 5px 25px 10px rgba(255, 255, 255, 0.25), -5px -5px 25px 10px rgba(255, 255, 255, 0.22)" }}
           transition={{ duration: 0.75 }}
         >
