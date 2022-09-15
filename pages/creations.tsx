@@ -42,7 +42,7 @@ export default function Creations() {
 			</Heading>
 			<Stack direction = {['column', 'row']} spacing = {10} mt={10}>
 				{creations.map((creation, i) => (
-					<Card delay = {0.2 * i} duration = {0.5}>
+					<Card delay = {0.2 * i} key = {i} duration = {0.5}>
 						{creation.name}
 					</Card>
 				))}
