@@ -12,8 +12,8 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/layout";
-import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import Card from "../components/Card";
 
 export default function Contact() {
   interface formData {
@@ -37,7 +37,7 @@ export default function Contact() {
     await console.log(data);
     data.ip = "192.168.1.2"
 
-    //Make a post request to cloudflare worker
+    //Make a post request to cloudflare worker to submit form response
     await fetch('https://contact.tinu-personal.workers.dev', {
       method: 'POST',
       mode: "cors",
@@ -79,82 +79,71 @@ export default function Contact() {
           }}
         />
       </Heading>
-      <Box className="main-outer-box" mt={10}>
-        <motion.div
-          initial={{ opacity: 0, borderRadius: '8.5px', scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1, boxShadow: "5px 5px 25px 10px rgba(255, 255, 255, 0.25), -5px -5px 25px 10px rgba(255, 255, 255, 0.22)" }}
-          transition={{ duration: 0.75 }}
-        >
-          <Box
-            className={`main-inner-box-${colorMode}`}
-            borderRadius="lg"
-            p={10}
-            textAlign="center"
-          >
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack direction={["column", "row"]} spacing={5}>
-                <FormControl isInvalid={errors.name !== undefined}>
-                  <FormLabel htmlFor="name">Name</FormLabel>
+      <Box className="main-outer-box" mt={10} textAlign="center">
+        <Card>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stack direction={["column", "row"]} spacing={5}>
+              <FormControl isInvalid={errors.name !== undefined}>
+                <FormLabel htmlFor="name">Name</FormLabel>
 
-                  <Input
-                    variant="filled"
-                    id="name"
-                    type="text"
-                    placeholder="Name"
-                    focusBorderColor={colorMode === "light" ? "black" : "white"}
-                    isInvalid={errors.name !== undefined}
-                    {...register("name", {
-                      required: "Name is required!", minLength: {
-                        value: 2,
-                        message: "Name must be at least 2 characters long!"
-                      }
-                    })}
-                  />
-
-                  <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
-                </FormControl>
-
-                <FormControl isInvalid={errors.email !== undefined}>
-                  <FormLabel htmlFor="email">Email</FormLabel>
-
-                  <Input
-                    variant="filled"
-                    id="email"
-                    placeholder="Email"
-                    focusBorderColor={colorMode === "light" ? "black" : "white"}
-                    isInvalid={errors.email !== undefined}
-                    {...register("email", {
-                      required: "Email is required!", pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Please enter a valid email address!"
-                      }
-                    })}
-                  />
-
-                  <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-                </FormControl>
-              </Stack>
-
-              <Box m={5} />
-              <FormControl isInvalid={errors.message !== undefined}>
-                <FormLabel htmlFor="message">Message</FormLabel>
-
-                <Textarea
+                <Input
                   variant="filled"
-                  id="message"
-                  placeholder="Message"
+                  id="name"
+                  type="text"
+                  placeholder="Name"
                   focusBorderColor={colorMode === "light" ? "black" : "white"}
-                  isInvalid={errors.message !== undefined}
-                  {...register("message", { required: "Message is required!" })}
+                  isInvalid={errors.name !== undefined}
+                  {...register("name", {
+                    required: "Name is required!", minLength: {
+                      value: 2,
+                      message: "Name must be at least 2 characters long!"
+                    }
+                  })}
                 />
 
-                <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
+                <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
               </FormControl>
-              <Box m={5} />
-              <Button type="submit" disabled={isSubmitting}>{isSubmitting ? <>Sending &nbsp; <Spinner /></> : "Send"}</Button>
-            </form>
-          </Box>
-        </motion.div>
+
+              <FormControl isInvalid={errors.email !== undefined}>
+                <FormLabel htmlFor="email">Email</FormLabel>
+
+                <Input
+                  variant="filled"
+                  id="email"
+                  placeholder="Email"
+                  focusBorderColor={colorMode === "light" ? "black" : "white"}
+                  isInvalid={errors.email !== undefined}
+                  {...register("email", {
+                    required: "Email is required!", pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: "Please enter a valid email address!"
+                    }
+                  })}
+                />
+
+                <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+              </FormControl>
+            </Stack>
+
+            <Box m={5} />
+            <FormControl isInvalid={errors.message !== undefined}>
+              <FormLabel htmlFor="message">Message</FormLabel>
+
+              <Textarea
+                variant="filled"
+                id="message"
+                placeholder="Message"
+                focusBorderColor={colorMode === "light" ? "black" : "white"}
+                isInvalid={errors.message !== undefined}
+                {...register("message", { required: "Message is required!" })}
+              />
+
+              <FormErrorMessage>{errors.message?.message}</FormErrorMessage>
+            </FormControl>
+            <Box m={5} />
+            <Button type="submit" disabled={isSubmitting}>{isSubmitting ? <>Sending &nbsp; <Spinner /></> : "Send"}</Button>
+          </form>
+        </Card>
       </Box>
     </div>
   );
