@@ -24,7 +24,7 @@ export default function Card(props: CardProps) {
 				animate={{ opacity: 1, scale: 1, boxShadow: shadow}}
 				transition={{ duration: props.duration || 0.75, delay: props.delay || 0 }}
 				className={`main-inner-box-${colorMode}`}
-				>
+			>
 				<Box p={props.padding || 10}>
 					{props.children}
 				</Box>

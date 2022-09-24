@@ -16,7 +16,7 @@ const Tilt = ({ options = {}, children, tilt, ...props }) => {
     })
   }, [])
   if (tilt) return React.cloneElement(children, { ref: root })
-  else return children
+  return children
 }
 
 export default Tilt

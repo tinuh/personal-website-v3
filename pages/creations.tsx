@@ -3,11 +3,14 @@ import {
 	Heading,
 	Box,
 	Stack,
-	Text
+	SimpleGrid,
+	Text,
 } from '@chakra-ui/layout';
+import { Image } from '@chakra-ui/react';
 import Typewriter from 'typewriter-effect';
 import { useColorMode } from '@chakra-ui/color-mode';
 import Card from '../components/Card';
+import Tilt from '../components/Tilt';
 
 const creations = [
 	{
@@ -44,16 +47,48 @@ export default function Creations() {
 					}}
 				/>
 			</Heading>
-			<Stack direction = {['column', 'row']} spacing = {10} mt={10} textAlign="center">
+			<SimpleGrid columns = {[1, 2, 3]} spacing = {10} mt={10} textAlign="center">
 				{creations.map((creation, i) => (
-					<Card padding={0.1} noShadow tilt delay = {0.2 * i} key = {i} duration = {0.5}>
-						<img width="300px" style = {{"borderRadius": "10px"}} src={creation.img}/>
+					<Card padding={6} noShadow delay = {0.2 * i} key = {i} duration = {0.5}>
+						<Tilt tilt>
+							<Box
+								rounded={'lg'}
+								mt={-12}
+								pos={'relative'}
+								height={'150px'}
+								//overflow={'hidden'}
+								_after={{
+									transition: 'all .3s ease',
+									content: '""',
+									w: 'full',
+									h: 'full',
+									pos: 'absolute',
+									top: 5,
+									left: 0,
+									backgroundImage: `url(${creation.img})`,
+									filter: 'blur(15px)',
+									zIndex: -1,
+								}}
+								_groupHover={{
+									_after: {
+									filter: 'blur(20px)',
+								}
+							}}>
+									<Image
+										rounded={'lg'}
+										height={150}
+										objectFit={'cover'}
+										src={creation.img}
+										zIndex={1}
+										/>
+							</Box>
+						</Tilt>
 						<Text py="5">
 							{creation.name}
 						</Text>
 					</Card>
 				))}
-			</Stack>
+			</SimpleGrid>
 		</Box>
 	)
 }
