@@ -11,6 +11,8 @@ interface CardProps {
 	duration?: number,
 	noShadow?: boolean,
 	padding?: number,
+	mt?: number,
+	mb?: number,
 }
 
 export default function Card(props: CardProps) {
@@ -24,8 +26,9 @@ export default function Card(props: CardProps) {
 				animate={{ opacity: 1, scale: 1, boxShadow: shadow}}
 				transition={{ duration: props.duration || 0.75, delay: props.delay || 0 }}
 				className={`main-inner-box-${colorMode}`}
+				style={{'marginTop': props.mt || 0, 'marginBottom': props.mb || 0}}
 			>
-				<Box p={props.padding || 10}>
+				<Box p={props.padding || 10} transform='translateZ(100px)'>
 					{props.children}
 				</Box>
 			</motion.div>
