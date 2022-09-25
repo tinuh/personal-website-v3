@@ -63,3 +63,33 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
+
+.link {
+ display: inline-block;
+ position: relative;
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  transition: width 0.25s ease-in-out;
+}
+
+.link:hover::before {
+  opacity: 1;
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+.link-dark::before {
+  background-color: #fff;
+}
+
+.link-light::before {
+  background-color: black;
+}

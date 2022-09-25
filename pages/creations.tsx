@@ -6,6 +6,7 @@ import { useColorMode } from "@chakra-ui/color-mode";
 import Card from "../components/Card";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
+import parse, { domToReact } from "html-react-parser";
 
 export async function getStaticProps() {
 	const headers = {
@@ -26,29 +27,6 @@ export async function getStaticProps() {
 		props: { data: data.records },
 	};
 }
-
-const creations = [
-	{
-		name: "QR Tools",
-		link: "https://qr.tinu.tech",
-		img: "https://dl.airtable.com/.attachments/53c69098ee24adfb06cd4d4ba694072b/9046f2c2/Screenshot2021-11-02213547.png",
-	},
-	{
-		name: "Pollster",
-		link: "https://pollster.tinu.tech",
-		img: "https://dl.airtable.com/.attachments/2aa9d3261280c735dbc81e14a4944a1a/61020969/pollster.png",
-	},
-	{
-		name: "Digital Fit",
-		link: "https://fit.tinu.tech",
-		img: "https://dl.airtable.com/.attachments/d506ac2f66ce77f2ee137f4fb8f8f5eb/3efa6682/digitalFit.png",
-	},
-	{
-		name: "Homework Manager",
-		link: "https://homework.tinu.tech",
-		img: "https://dl.airtable.com/.attachments/a7341132e86d622498ca2becdca3516e/84da3885/homeworkManager.jpg",
-	},
-];
 
 interface creationType {
 	fields: {
@@ -114,7 +92,7 @@ export default function Creations(props: { data: creationType[] }) {
 									<Box
 										rounded={"lg"}
 										pos={"relative"}
-										height={"150px"}
+										w="100%"
 										_after={{
 											transition: "all .3s ease",
 											content: '""',
@@ -132,8 +110,8 @@ export default function Creations(props: { data: creationType[] }) {
 									>
 										<a target="blank" href={creation.fields.URL}>
 											<Image
-												rounded={"lg"}
-												height={150}
+												borderRadius={'10px'}
+												w='100%'
 												objectFit={"cover"}
 												src={creation.fields.Image[0].url}
 											/>
@@ -142,8 +120,10 @@ export default function Creations(props: { data: creationType[] }) {
 								</Tilt>
 							</motion.div>
 						</Box>
-						<Text py="5" fontSize={'1.2rem'}>{creation.fields.Name}</Text>
-						<Text textAlign="left">{creation.fields.Description}</Text>
+						<Text mt={3} mb={1} fontSize={"1.3rem"}>
+							{creation.fields.Name}
+						</Text>
+						<Text textAlign="left">{parse(creation.fields.Description.replace(/index-link/g, `link link-${colorMode}`))}</Text>
 					</Card>
 				))}
 			</SimpleGrid>

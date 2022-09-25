@@ -5,9 +5,11 @@ import { Box, Flex, Link as CLink, Text } from "@chakra-ui/layout";
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import ColorModeToggle from "./ColorModeToggle";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const TextAnimation = () => {
 	const { colorMode } = useColorMode();
+	const { pathname } = useRouter();
 
 	return (
 		<Link href="/">
@@ -22,6 +24,7 @@ const TextAnimation = () => {
 					xmlns="http://www.w3.org/2000/svg"
 				>
 					<motion.path
+						key = {pathname}
 						initial={{
 							pathLength: 0,
 						}}
