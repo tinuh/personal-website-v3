@@ -7,6 +7,26 @@ import Card from "../components/Card";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 
+export async function getStaticProps() {
+	const headers = {
+		Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+	};
+
+	let res = await fetch(
+		"https://api.airtable.com/v0/appj7u8nrwKWHIEdc/Creations?filterByFormula=({Status}='Published')&sort[0][field]=Priority&sort[0][direction]=asc",
+		{
+			method: "GET",
+			headers: headers,
+		}
+	);
+
+	let data = await res.json();
+
+	return {
+		props: { data: data.records },
+	};
+}
+
 const creations = [
 	{
 		name: "QR Tools",
@@ -30,7 +50,21 @@ const creations = [
 	},
 ];
 
-export default function Creations() {
+interface creationType {
+	fields: {
+		Name: string;
+		Description: string;
+		URL: string;
+		Github: string;
+		Image: [
+			{
+				url: string;
+			}
+		];
+	};
+}
+
+export default function Creations(props: { data: creationType[] }) {
 	const { colorMode } = useColorMode();
 
 	return (
@@ -43,7 +77,7 @@ export default function Creations() {
 				/>
 			</Heading>
 			<SimpleGrid columns={[1, 2, 3]} spacing={7} mt={10} textAlign="center">
-				{creations.map((creation, i) => (
+				{props.data.map((creation, i) => (
 					<Card
 						padding={6}
 						noShadow
@@ -89,26 +123,27 @@ export default function Creations() {
 											pos: "absolute",
 											top: 0,
 											left: 0,
-											backgroundImage: creation.img,
+											backgroundImage: creation.fields.Image[0].url,
 											backgroundSize: "cover",
 											backgroundPosition: "center",
 											filter: "blur(20px)",
 											zIndex: -1,
 										}}
 									>
-										<a target="blank" href={creation.link}>
+										<a target="blank" href={creation.fields.URL}>
 											<Image
 												rounded={"lg"}
 												height={150}
 												objectFit={"cover"}
-												src={creation.img}
+												src={creation.fields.Image[0].url}
 											/>
 										</a>
 									</Box>
 								</Tilt>
 							</motion.div>
 						</Box>
-						<Text py="5">{creation.name}</Text>
+						<Text py="5" fontSize={'1.2rem'}>{creation.fields.Name}</Text>
+						<Text textAlign="left">{creation.fields.Description}</Text>
 					</Card>
 				))}
 			</SimpleGrid>
