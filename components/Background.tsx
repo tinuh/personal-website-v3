@@ -1,32 +1,28 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import Blob from "./Blob";
-import { useColorMode } from "@chakra-ui/react";
+import { color, useColorMode } from "@chakra-ui/react";
 import { OrbitControls, PresentationControls } from "@react-three/drei";
 
 interface blobType {
-  pos: number[]
-  color: string
+	pos: number[];
+	color: string;
 }
 
-export default function Background({blobs} : {blobs: blobType[]}) {
-  const { colorMode } = useColorMode();
+export default function Background({ blobs }: { blobs: blobType[] }) {
+	const { colorMode } = useColorMode();
 
-  const styles = {
-    canvas: `canvas-${colorMode}`,
-  };
+	return (
+		<div className={`canvas-${colorMode}`}>
+			<Canvas camera={{ fov: 25, position: [0, 15, 20] }}>
+				<OrbitControls enableZoom={false} autoRotate={true} />
+				<ambientLight intensity={colorMode === "dark" ? 0.5 : 1} />
+				<directionalLight position={[-2, 5, 2]} intensity={5} color="#FF4161" />
 
-  return (
-    <div className={styles.canvas}>
-      <Canvas camera={{ fov: 25, position: [0, 15, 20]}}>
-        <OrbitControls enableZoom={false} autoRotate={true} />
-        <ambientLight intensity={colorMode === "dark" ? 0.5 : 1} />
-        <directionalLight position={[-2, 5, 2]} intensity={5} color="#FF4161"/>
-
-        {blobs.map(({pos, color}, key) => 
-          <Blob pos={pos} color={color} key = {key}/>
-        )}
-      </Canvas>
-    </div>
-  );
+				{blobs.map(({ pos, color }, key) => (
+					<Blob pos={pos} color={color} key={key} />
+				))}
+			</Canvas>
+		</div>
+	);
 }

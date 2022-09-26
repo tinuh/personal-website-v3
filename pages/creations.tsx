@@ -58,7 +58,7 @@ export default function Creations(props: { data: creationType[] }) {
 					}}
 				/>
 			</Heading>
-			<SimpleGrid columns={[1, 2, 3]} spacing={7} mt={10} textAlign="center">
+			<SimpleGrid columns={[1, 2, 2, 3]} spacing={7} mt={10} textAlign="center">
 				{props.data.map((creation, i) => (
 					<Card
 						padding={6}

@@ -92,11 +92,15 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 		open: {
 			height: "100vh",
 			backdropFilter: "blur(30px)",
-			backgroundColor: `rgba(${colorMode === "dark" ? '0, 0, 0' : '255, 255, 255'}, 0.3)`,
+			backgroundColor: `rgba(${
+				colorMode === "dark" ? "0, 0, 0" : "255, 255, 255"
+			}, 0.3)`,
 		},
 		closed: {
 			backdropFilter: "blur(10px)",
-			backgroundColor: `rgba(${colorMode === "light" ? '0, 0, 0' : '255, 255, 255'}, 0.1)`,
+			backgroundColor: `rgba(${
+				colorMode === "light" ? "0, 0, 0" : "255, 255, 255"
+			}, 0.1)`,
 			overflow: "hidden",
 		},
 	};
@@ -121,9 +125,10 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 				transition={{ duration: 0.5 }}
 				style={{
 					zIndex: 1,
-					position: "absolute",
+					position: "fixed",
 					width: "100%",
 					textAlign: "center",
+					top: 0,
 				}}
 				className={`nav-${colorMode}`}
 			>
