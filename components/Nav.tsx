@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Box, Flex, Link as CLink, Text } from "@chakra-ui/layout";
@@ -6,6 +6,23 @@ import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import ColorModeToggle from "./ColorModeToggle";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { Button, IconButton } from "@chakra-ui/react";
+
+const elements = [
+	{
+		name: "Home",
+		link: "/",
+	},
+	{
+		name: "Creations",
+		link: "/creations",
+	},
+	{
+		name: "Contact",
+		link: "/contact",
+	},
+];
 
 const TextAnimation = () => {
 	const { colorMode } = useColorMode();
@@ -24,7 +41,7 @@ const TextAnimation = () => {
 					xmlns="http://www.w3.org/2000/svg"
 				>
 					<motion.path
-						key = {pathname}
+						key={pathname}
 						initial={{
 							pathLength: 0,
 						}}
@@ -45,8 +62,8 @@ const TextAnimation = () => {
 	);
 };
 
-const Element = (props: { href: string; name: string }) => {
-	const { href, name } = props;
+const Element = (props: { href: string; name: string; onClick?: any }) => {
+	const { href, name, onClick } = props;
 
 	return (
 		<Link href={href}>
@@ -55,6 +72,7 @@ const Element = (props: { href: string; name: string }) => {
 				py={1}
 				margin="auto"
 				rounded={"md"}
+				onClick={onClick}
 				_hover={{
 					textDecoration: "none",
 					bg: useColorModeValue("gray.200", "gray.700"),
@@ -66,49 +84,112 @@ const Element = (props: { href: string; name: string }) => {
 	);
 };
 
-const Ham = (props: { children?: React.ReactNode }) => {
-	const { children } = props;
+const menuVariants = {
+	open: {
+		height: "100vh",
+	},
+	closed: {
+		overflow: "hidden",
+	},
+};
+
+const linkVariants = {
+	open: {
+		opacity: 1,
+		display: "block",
+	},
+	closed: {
+		opacity: 0,
+		display: "none",
+	},
+};
+
+const Ham = ({ children }: { children?: React.ReactNode }) => {
+	const [isOpen, setIsOpen] = React.useState(false);
+	const { colorMode } = useColorMode();
 
 	return (
-		<Flex px={3} py={2}>
-			<TextAnimation />
+		<Box pb={"7.5vh"}>
+			<motion.nav
+				initial={false}
+				variants={menuVariants}
+				animate={isOpen ? "open" : "closed"}
+				transition={{ duration: 0.5 }}
+				style={{
+					zIndex: 1,
+					position: "absolute",
+					width: "100%",
+					textAlign: "center",
+				}}
+				className={`nav-${colorMode}`}
+			>
+				<Box zIndex={2}>
+					<Flex px={3} py={2}>
+						<TextAnimation />
 
-			<Box mr={0} ml="auto">
-				<ColorModeToggle ml={3} />
-			</Box>
-			{children}
-		</Flex>
+						<Box mr={0} ml="auto">
+							<IconButton
+								onClick={() => setIsOpen(!isOpen)}
+								aria-label="Toggle Navbar"
+							>
+								{isOpen ? <CloseIcon /> : <HamburgerIcon />}
+							</IconButton>
+						</Box>
+					</Flex>
+				</Box>
+				<Box>
+					{elements.map((element, i) => (
+						<motion.div
+							initial={false}
+							variants={linkVariants}
+							transition={isOpen ? {
+								delay: 0.5 + 0.2 * i,
+							} : {}}
+							animate={isOpen ? "open" : "closed"}
+						>
+							<Box my={10}>
+								<Element
+									href={element.link}
+									name={element.name}
+									onClick={() => setIsOpen(false)}
+								/>
+							</Box>
+						</motion.div>
+					))}
+				</Box>
+			</motion.nav>
+		</Box>
 	);
 };
 
-const Bar = (props: { children?: React.ReactNode }) => {
-	const { children } = props;
-
-	return (
-		<Flex px={3} py={2}>
-			<TextAnimation />
-
-			<Box mr={0} ml="auto">
-				<Element href="/" name={"Home"} />
-				<Element href="/creations" name={"Creations"} />
-				<Element href="/contact" name={"Contact"} />
-
-				<ColorModeToggle ml={3} />
-			</Box>
-			{children}
-		</Flex>
-	);
-};
-
-export default function Nav() {
+const Bar = ({ children }: { children?: React.ReactNode }) => {
 	const { colorMode } = useColorMode();
 
 	return (
 		<Box className={`nav-${colorMode}`}>
+			<Flex px={3} py={2}>
+				<TextAnimation />
+
+				<Box mr={0} ml="auto">
+					<Element href="/" name={"Home"} />
+					<Element href="/creations" name={"Creations"} />
+					<Element href="/contact" name={"Contact"} />
+
+					<ColorModeToggle ml={3} />
+				</Box>
+				{children}
+			</Flex>
+		</Box>
+	);
+};
+
+export default function Nav() {
+	return (
+		<>
 			{useBreakpointValue({
 				sm: <Bar />,
 				base: <Ham />,
 			})}
-		</Box>
+		</>
 	);
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { Heading, Box, Stack, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import Typewriter from "typewriter-effect";
@@ -6,7 +7,7 @@ import { useColorMode } from "@chakra-ui/color-mode";
 import Card from "../components/Card";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import parse, { domToReact } from "html-react-parser";
+import parse from "html-react-parser";
 
 export async function getStaticProps() {
 	const headers = {
@@ -47,6 +48,9 @@ export default function Creations(props: { data: creationType[] }) {
 
 	return (
 		<Box className="main-outer-box">
+			<Head>
+				<title>Creations - Tinu Vanapamula</title>
+			</Head>
 			<Heading textAlign="center">
 				<Typewriter
 					onInit={(typewriter) => {
@@ -110,8 +114,8 @@ export default function Creations(props: { data: creationType[] }) {
 									>
 										<a target="blank" href={creation.fields.URL}>
 											<Image
-												borderRadius={'10px'}
-												w='100%'
+												borderRadius={"10px"}
+												w="100%"
 												objectFit={"cover"}
 												src={creation.fields.Image[0].url}
 											/>
@@ -123,7 +127,14 @@ export default function Creations(props: { data: creationType[] }) {
 						<Text mt={3} mb={1} fontSize={"1.3rem"}>
 							{creation.fields.Name}
 						</Text>
-						<Text textAlign="left">{parse(creation.fields.Description.replace(/index-link/g, `link link-${colorMode}`))}</Text>
+						<Text textAlign="left">
+							{parse(
+								creation.fields.Description.replace(
+									/index-link/g,
+									`link link-${colorMode}`
+								)
+							)}
+						</Text>
 					</Card>
 				))}
 			</SimpleGrid>

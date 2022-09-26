@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { Box } from '@chakra-ui/layout'
+import Head from 'next/head'
 import Background from '../components/Background'
 import Nav from '../components/Nav'
 
@@ -46,6 +47,10 @@ const blobs: blobType[] = [
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <Head>
+        <title>Tinu Vanapamula</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Background blobs = {blobs} />
       <Nav />
       <Box p = {5} />
