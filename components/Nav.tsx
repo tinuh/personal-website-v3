@@ -140,6 +140,7 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 				<Box>
 					{elements.map((element, i) => (
 						<motion.div
+							key={i}
 							initial={false}
 							variants={linkVariants}
 							transition={isOpen ? {
