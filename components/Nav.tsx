@@ -84,29 +84,33 @@ const Element = (props: { href: string; name: string; onClick?: any }) => {
 	);
 };
 
-const menuVariants = {
-	open: {
-		height: "100vh",
-	},
-	closed: {
-		overflow: "hidden",
-	},
-};
-
-const linkVariants = {
-	open: {
-		opacity: 1,
-		display: "block",
-	},
-	closed: {
-		opacity: 0,
-		display: "none",
-	},
-};
-
 const Ham = ({ children }: { children?: React.ReactNode }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const { colorMode } = useColorMode();
+
+	const menuVariants = {
+		open: {
+			height: "100vh",
+			backdropFilter: "blur(30px)",
+			backgroundColor: `rgba(${colorMode === "dark" ? '0, 0, 0' : '255, 255, 255'}, 0.3)`,
+		},
+		closed: {
+			backdropFilter: "blur(10px)",
+			backgroundColor: `rgba(${colorMode === "light" ? '0, 0, 0' : '255, 255, 255'}, 0.1)`,
+			overflow: "hidden",
+		},
+	};
+
+	const linkVariants = {
+		open: {
+			opacity: 1,
+			display: "block",
+		},
+		closed: {
+			opacity: 0,
+			display: "none",
+		},
+	};
 
 	return (
 		<Box pb={"7.5vh"}>
@@ -143,9 +147,13 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 							key={i}
 							initial={false}
 							variants={linkVariants}
-							transition={isOpen ? {
-								delay: 0.5 + 0.2 * i,
-							} : {}}
+							transition={
+								isOpen
+									? {
+											delay: 0.5 + 0.2 * i,
+									  }
+									: {}
+							}
 							animate={isOpen ? "open" : "closed"}
 						>
 							<Box my={10}>
