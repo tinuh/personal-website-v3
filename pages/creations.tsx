@@ -67,7 +67,7 @@ export default function Creations(props: { data: creationType[] }) {
 						key={i}
 						duration={0.5}
 						mt={12}
-						mb={10}
+						mb={15}
 					>
 						<Box mt={-12}>
 							<motion.div

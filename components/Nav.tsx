@@ -6,8 +6,8 @@ import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode";
 import ColorModeToggle from "./ColorModeToggle";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { Button, IconButton } from "@chakra-ui/react";
+import Hamburger from "hamburger-react";
+import { IconButton } from "@chakra-ui/react";
 
 const elements = [
 	{
@@ -24,13 +24,14 @@ const elements = [
 	},
 ];
 
-const TextAnimation = () => {
+const TextAnimation = ({ onClick }: { onClick?: any }) => {
 	const { colorMode } = useColorMode();
 	const { pathname } = useRouter();
 
 	return (
 		<Link href="/">
 			<CLink
+				onClick={onClick}
 				_hover={{ textDecoration: "none" }}
 				style={{ marginTop: "auto", marginBottom: "auto" }}
 			>
@@ -101,18 +102,24 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 			backgroundColor: `rgba(${
 				colorMode === "light" ? "0, 0, 0" : "255, 255, 255"
 			}, 0.1)`,
-			overflow: "hidden",
 		},
 	};
 
 	const linkVariants = {
 		open: {
 			opacity: 1,
-			display: "block",
 		},
 		closed: {
 			opacity: 0,
-			display: "none",
+		},
+	};
+
+	const innerVariants = {
+		open: {
+			marginTop: "0",
+		},
+		closed: {
+			marginTop: "-100vh",
 		},
 	};
 
@@ -128,49 +135,69 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 					position: "fixed",
 					width: "100%",
 					textAlign: "center",
-					top: 0,
 				}}
 				className={`nav-${colorMode}`}
 			>
 				<Box zIndex={2}>
 					<Flex px={3} py={2}>
-						<TextAnimation />
+						<TextAnimation onClick={() => setIsOpen(false)} />
 
-						<Box mr={0} ml="auto">
-							<IconButton
-								onClick={() => setIsOpen(!isOpen)}
-								aria-label="Toggle Navbar"
-							>
-								{isOpen ? <CloseIcon /> : <HamburgerIcon />}
-							</IconButton>
+						<Box mr={0} ml="auto" my={-1}>
+							<Hamburger
+								toggled={isOpen}
+								toggle={setIsOpen}
+								size={25}
+								rounded
+								label="Oven Menu"
+							/>
 						</Box>
 					</Flex>
 				</Box>
-				<Box>
-					{elements.map((element, i) => (
+				<motion.div
+					initial={false}
+					variants={innerVariants}
+					animate={isOpen ? "open" : "closed"}
+					transition={{ duration: 0.5 }}
+					style={{ height: "100vh" }}
+				>
+					<Box>
+						{elements.map((element, i) => (
+							<motion.div
+								key={i}
+								initial={false}
+								variants={linkVariants}
+								transition={
+									isOpen
+										? {
+												delay: 0.1 + 0.1 * i,
+												default: { ease: "linear" },
+												duration: 0.1,
+										  }
+										: {}
+								}
+								animate={isOpen ? "open" : "closed"}
+							>
+								<Box py={7}>
+									<Element
+										href={element.link}
+										name={element.name}
+										onClick={() => setIsOpen(false)}
+									/>
+								</Box>
+							</motion.div>
+						))}
 						<motion.div
-							key={i}
 							initial={false}
 							variants={linkVariants}
-							transition={
-								isOpen
-									? {
-											delay: 0.5 + 0.2 * i,
-									  }
-									: {}
-							}
 							animate={isOpen ? "open" : "closed"}
+							transition={{ duration: 0.5, delay: 0.3 }}
 						>
-							<Box my={10}>
-								<Element
-									href={element.link}
-									name={element.name}
-									onClick={() => setIsOpen(false)}
-								/>
+							<Box pt={7}>
+								<ColorModeToggle />
 							</Box>
 						</motion.div>
-					))}
-				</Box>
+					</Box>
+				</motion.div>
 			</motion.nav>
 		</Box>
 	);
@@ -180,19 +207,21 @@ const Bar = ({ children }: { children?: React.ReactNode }) => {
 	const { colorMode } = useColorMode();
 
 	return (
-		<Box className={`nav-${colorMode}`}>
-			<Flex px={3} py={2}>
-				<TextAnimation />
+		<Box pb={"7.5vh"}>
+			<Box className={`nav-${colorMode}`} position="fixed" w="100%">
+				<Flex px={3} py={2}>
+					<TextAnimation />
 
-				<Box mr={0} ml="auto">
-					<Element href="/" name={"Home"} />
-					<Element href="/creations" name={"Creations"} />
-					<Element href="/contact" name={"Contact"} />
+					<Box mr={0} ml="auto">
+						<Element href="/" name={"Home"} />
+						<Element href="/creations" name={"Creations"} />
+						<Element href="/contact" name={"Contact"} />
 
-					<ColorModeToggle ml={3} />
-				</Box>
-				{children}
-			</Flex>
+						<ColorModeToggle ml={3} />
+					</Box>
+					{children}
+				</Flex>
+			</Box>
 		</Box>
 	);
 };
