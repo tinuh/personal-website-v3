@@ -116,7 +116,7 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 
 	const innerVariants = {
 		open: {
-			marginTop: "0",
+			marginTop: 0,
 		},
 		closed: {
 			marginTop: "-100vh",
