@@ -266,7 +266,7 @@ const Bar = ({ children }: { children?: React.ReactNode }) => {
 						<Element href="/creations" name={"Creations"} />
 						<Element href="/contact" name={"Contact"} />
 
-						<Box display="inline-block">
+						<Box display="inline-block" ml={2}>
 							<IconButton
 								aria-label="dropdown"
 								onClick={() => openIcons(!iconDropDown)}
