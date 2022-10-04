@@ -22,6 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.35.0",
+    "react-icons": "^4.4.0",
     "react-parallax-tilt": "^1.7.67",
     "three": "^0.141.0",
     "typewriter-effect": "^2.19.0"

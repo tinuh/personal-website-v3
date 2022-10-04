@@ -8,6 +8,15 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Hamburger from "hamburger-react";
 import { IconButton } from "@chakra-ui/react";
+import {
+	FaGithub,
+	FaLinkedinIn,
+	FaInstagram,
+	FaRegFileAlt,
+	FaAngleDown,
+	FaAngleUp,
+} from "react-icons/fa";
+import { constants } from "buffer";
 
 const elements = [
 	{
@@ -148,7 +157,7 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 								toggle={setIsOpen}
 								size={25}
 								rounded
-								label="Oven Menu"
+								label="Open Menu"
 							/>
 						</Box>
 					</Flex>
@@ -169,7 +178,7 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 								transition={
 									isOpen
 										? {
-												delay: 0.1 + 0.1 * i,
+												delay: 0.3 + 0.1 * i,
 												default: { ease: "linear" },
 												duration: 0.1,
 										  }
@@ -192,9 +201,21 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 							animate={isOpen ? "open" : "closed"}
 							transition={{ duration: 0.5, delay: 0.3 }}
 						>
-							<Box pt={7}>
+							<Flex pt={7} gap={2} justifyContent="center" alignItems="center">
 								<ColorModeToggle />
-							</Box>
+								<a target="blank" href="https://github.com/tinuh">
+									<IconButton aria-label="github" icon={<FaGithub />} />
+								</a>
+								<a target="blank" href="https://linkedin.com/in/tinu24">
+									<IconButton aria-label="github" icon={<FaLinkedinIn />} />
+								</a>
+								<a target="blank" href="https://instagram.com/tinuvanapamula">
+									<IconButton aria-label="github" icon={<FaInstagram />} />
+								</a>
+								<a target="blank" href="/assets/Tinu's Resume.pdf">
+									<IconButton aria-label="github" icon={<FaRegFileAlt />} />
+								</a>
+							</Flex>
 						</motion.div>
 					</Box>
 				</motion.div>
@@ -203,8 +224,36 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 	);
 };
 
+const icons = [
+	{
+		name: "Color Mode",
+		icon: <ColorModeToggle />,
+	},
+	{
+		name: "Github",
+		icon: <FaGithub />,
+		url: "https://github.com/tinuh",
+	},
+	{
+		name: "Linkedin",
+		icon: <FaLinkedinIn />,
+		url: "https://linkedin.com/in/tinu24",
+	},
+	{
+		name: "Instagram",
+		icon: <FaInstagram />,
+		url: "https://instagram.com/tinuvanapamula",
+	},
+	{
+		name: "Resume",
+		icon: <FaRegFileAlt />,
+		url: "/assets/Tinu's Resume.pdf",
+	},
+];
+
 const Bar = ({ children }: { children?: React.ReactNode }) => {
 	const { colorMode } = useColorMode();
+	const [iconDropDown, openIcons] = useState(false);
 
 	return (
 		<Box pb={"7.5vh"}>
@@ -217,7 +266,43 @@ const Bar = ({ children }: { children?: React.ReactNode }) => {
 						<Element href="/creations" name={"Creations"} />
 						<Element href="/contact" name={"Contact"} />
 
-						<ColorModeToggle ml={3} />
+						<Box display="inline-block">
+							<IconButton
+								aria-label="dropdown"
+								onClick={() => openIcons(!iconDropDown)}
+								icon={iconDropDown ? <FaAngleUp /> : <FaAngleDown />}
+								zIndex={100}
+							/>
+
+							<Flex position="absolute" flexDirection="column" gap={3} mt={3}>
+								{icons.map(({ name, url, icon }, i) => (
+									<motion.div
+										key={i}
+										initial={false}
+										variants={{
+											open: {
+												opacity: 1,
+												y: 0,
+											},
+											closed: {
+												opacity: 0,
+												y: -52 - i * 52,
+											},
+										}}
+										animate={iconDropDown ? "open" : "closed"}
+										transition={{ duration: 0.2, delay: 0.1 * i }}
+									>
+										<a
+											target="blank"
+											href={url}
+											onClick={() => openIcons(false)}
+										>
+											<IconButton aria-label={name} icon={icon} />
+										</a>
+									</motion.div>
+								))}
+							</Flex>
+						</Box>
 					</Box>
 					{children}
 				</Flex>
