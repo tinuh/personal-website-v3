@@ -75,8 +75,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</Head>
 			<Background blobs={blobs} />
 			<Nav />
-			<Box p={5} />
-			<Component {...pageProps} />
+			<Box py={10}>
+				<Component {...pageProps} />
+			</Box>
 		</ChakraProvider>
 	);
 }
