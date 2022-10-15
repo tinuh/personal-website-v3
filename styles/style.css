@@ -5,6 +5,11 @@ body {
   font-family: 'Lexend', sans-serif;
 }
 
+::selection {
+  background-color: #54ebe3;
+  color: #000;
+}
+
 .canvas-light {
   position: fixed;
   width: 100vw; 
