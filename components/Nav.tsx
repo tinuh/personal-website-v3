@@ -85,7 +85,7 @@ const Element = (props: { href: string; name: string; onClick?: any }) => {
 				onClick={onClick}
 				_hover={{
 					textDecoration: "none",
-					bg: useColorModeValue("gray.200", "gray.700"),
+					bg: useColorModeValue("blackAlpha.300", "whiteAlpha.300"),
 				}}
 			>
 				{name}

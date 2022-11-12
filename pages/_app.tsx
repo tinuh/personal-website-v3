@@ -72,6 +72,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<Head>
 				<title>Tinu Vanapamula</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<script defer data-domain="tinu.tech" src="https://stats.tinu.tech/js/plausible.js"></script>
 			</Head>
 			<Background blobs={blobs} />
 			<Nav />
