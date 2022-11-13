@@ -35,11 +35,7 @@ interface creationType {
 		Description: string;
 		URL: string;
 		Github: string;
-		Image: [
-			{
-				url: string;
-			}
-		];
+		Image: string;
 	};
 }
 
@@ -117,7 +113,7 @@ export default function Creations(props: { data: creationType[] }) {
 												borderRadius={"10px"}
 												w="100%"
 												objectFit={"cover"}
-												src={creation.fields.Image[0].url}
+												src={creation.fields.Image}
 											/>
 										</a>
 									</Box>
