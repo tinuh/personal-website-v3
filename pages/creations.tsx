@@ -101,7 +101,7 @@ export default function Creations(props: { data: creationType[] }) {
 											pos: "absolute",
 											top: 0,
 											left: 0,
-											backgroundImage: creation.fields.Image[0].url,
+											backgroundImage: creation.fields.Image,
 											backgroundSize: "cover",
 											backgroundPosition: "center",
 											filter: "blur(20px)",
