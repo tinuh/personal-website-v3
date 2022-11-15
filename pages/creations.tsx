@@ -1,13 +1,14 @@
 import React from "react";
 import Head from "next/head";
 import { Heading, Box, Stack, SimpleGrid, Text } from "@chakra-ui/layout";
-import { Image } from "@chakra-ui/react";
+import { createIcon, Image } from "@chakra-ui/react";
 import Typewriter from "typewriter-effect";
 import { useColorMode } from "@chakra-ui/color-mode";
 import Card from "../components/Card";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
+import { FaGithub } from "react-icons/fa";
 
 export async function getStaticProps() {
 	const headers = {
@@ -120,8 +121,19 @@ export default function Creations(props: { data: creationType[] }) {
 								</Tilt>
 							</motion.div>
 						</Box>
-						<Text mt={3} mb={1} fontSize={"1.3rem"}>
+						<Text
+							mt={3}
+							mb={1}
+							fontSize={"1.3rem"}
+							display="flex"
+							gap="2"
+							alignItems="center"
+							justifyContent="center"
+						>
 							{creation.fields.Name}
+							<a href={creation.fields.Github} target="blank">
+								<FaGithub />
+							</a>
 						</Text>
 						<Text textAlign="left">
 							{parse(

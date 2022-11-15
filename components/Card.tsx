@@ -4,13 +4,13 @@ import { Box } from "@chakra-ui/layout";
 import { useColorMode } from "@chakra-ui/color-mode";
 
 interface CardProps {
-	children: React.ReactNode
-	delay?: number
-	duration?: number
-	noShadow?: boolean
-	padding?: number
-	mt?: number
-	mb?: number
+	children: React.ReactNode;
+	delay?: number;
+	duration?: number;
+	noShadow?: boolean;
+	padding?: number;
+	mt?: number;
+	mb?: number;
 }
 
 export default function Card(props: CardProps) {
