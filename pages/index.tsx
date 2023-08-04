@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 						<img
 							style={{ borderRadius: "50%" }}
 							alt="Photo of Me"
-							src="/assets/personal.jpeg"
+							src="/assets/tinu.png"
 						/>
 					</Box>
 					<Box>
