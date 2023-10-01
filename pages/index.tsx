@@ -34,11 +34,11 @@ const Home: NextPage = () => {
 							/>
 						</Heading>
 						<Text fontSize={"1.3rem"}>
-							I&apos;m a junior at Montgomery Blair High School interested in
+							I&apos;m a senior at Montgomery Blair High School interested in
 							all things tech. I&apos;m interested in full-stack web
 							development, engineering, server management, and a variety of
-							other topics. In my spare time, I like to play chess and work with
-							my homelab.
+							other topics. In my spare time, I like to play ultimate frisbee
+							and work with my homelab.
 						</Text>
 					</Box>
 				</Stack>

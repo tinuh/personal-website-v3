@@ -209,7 +209,7 @@ const Ham = ({ children }: { children?: React.ReactNode }) => {
 								<a target="blank" href="https://linkedin.com/in/tinu24">
 									<IconButton aria-label="github" icon={<FaLinkedinIn />} />
 								</a>
-								<a target="blank" href="https://instagram.com/tinuvanapamula">
+								<a target="blank" href="https://instagram.com/tinu.vanapamula/">
 									<IconButton aria-label="github" icon={<FaInstagram />} />
 								</a>
 								<a target="blank" href="/assets/Tinu's Resume.pdf">
@@ -242,7 +242,7 @@ const icons = [
 	{
 		name: "Instagram",
 		icon: <FaInstagram />,
-		url: "https://instagram.com/tinuvanapamula",
+		url: "https://instagram.com/tinu.vanapamula",
 	},
 	{
 		name: "Resume",
