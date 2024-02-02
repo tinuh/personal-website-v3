@@ -71,7 +71,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<ChakraProvider theme={theme}>
 			<Head>
 				<title>Tinu Vanapamula</title>
-				<meta name="viewport" name="Tinu Vanapamula's personal website built with Next.js" content="initial-scale=1.0, width=device-width" />
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta name="description" content="Tinu Vanapamula's personal website built with Next.js" />
 				<script
 					defer
 					data-domain="tinu.tech"
