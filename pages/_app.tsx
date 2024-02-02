@@ -75,6 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<script
 					defer
 					data-domain="tinu.tech"
+					content="Tinu Vanapamula's personal website built with Next.js"
 					src="https://stats.tinu.tech/js/plausible.js"
 				></script>
 			</Head>
