@@ -73,6 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<title>Tinu Vanapamula</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="description" content="Tinu Vanapamula's personal website built with Next.js" />
+				<link rel="icon" href="/assets/me.png" />
 				<script
 					defer
 					data-domain="tinu.tech"

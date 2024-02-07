@@ -14,12 +14,18 @@ const Home: NextPage = () => {
 				<Stack direction={["column", "row"]} spacing={10}>
 					<Box
 						textAlign="center"
+						//verticalAlign={"middle"}
 						w={["100%", "100%", "100%", "100%", "75%", "50%"]}
 					>
 						<img
-							style={{ borderRadius: "50%" }}
-							alt="Photo of Me"
-							src="/assets/tinu.png"
+							style={{
+								borderRadius: "50%",
+								objectFit: "cover",
+								width: "100%",
+								aspectRatio: "1/1",
+							}}
+							alt="Personal Photo"
+							src="/assets/me.png"
 						/>
 					</Box>
 					<Box>

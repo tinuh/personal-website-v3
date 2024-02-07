@@ -115,6 +115,7 @@ export default function Creations(props: { data: creationType[] }) {
 												w="100%"
 												objectFit={"cover"}
 												src={creation.fields.Image}
+												alt={creation.fields.Name}
 											/>
 										</a>
 									</Box>
