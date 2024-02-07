@@ -7,6 +7,7 @@ import { Box } from "@chakra-ui/layout";
 import Head from "next/head";
 import Background from "../components/Background";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 const config = {
 	initialColorMode: "dark",
@@ -85,6 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<Box py={10}>
 				<Component {...pageProps} />
 			</Box>
+			<Footer />
 		</ChakraProvider>
 	);
 }

@@ -24,6 +24,10 @@ body {
   z-index: -3;
 }
 
+.main-outer-box {
+  margin-bottom: 30px;
+}
+
 @media (max-width: 992px){
   .main-outer-box{
     padding-left: 5%;
