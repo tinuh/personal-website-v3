@@ -257,7 +257,12 @@ const Bar = ({ children }: { children?: React.ReactNode }) => {
 
 	return (
 		<Box pb={"7.5vh"}>
-			<Box className={`nav-${colorMode}`} position="fixed" w="100%">
+			<Box
+				className={`nav-${colorMode}`}
+				position="fixed"
+				w="100%"
+				style={{ zIndex: 1 }}
+			>
 				<Flex px={3} py={2}>
 					<TextAnimation />
 
