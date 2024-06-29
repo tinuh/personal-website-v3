@@ -25,6 +25,8 @@ export async function getStaticProps() {
 
 	let data = await res.json();
 
+	console.log(data);
+
 	return {
 		props: { data: data.records },
 	};

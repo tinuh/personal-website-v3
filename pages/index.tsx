@@ -40,11 +40,18 @@ const Home: NextPage = () => {
 							/>
 						</Heading>
 						<Text fontSize={"1.3rem"}>
-							I&apos;m a senior at Montgomery Blair High School interested in
-							all things tech. I&apos;m interested in full-stack web
-							development, engineering, server management, and a variety of
+							I&apos;m a rising freshman studying Computer Science at the {""}
+							<a
+								href="https://umd.edu"
+								target="blank"
+								className={`link link-${colorMode}`}
+							>
+								University of Maryland
+							</a>{" "}
+							interested in all things tech. I&apos;m interested in full-stack
+							web development, engineering, server management, and a variety of
 							other topics. In my spare time, I like to play ultimate frisbee
-							and work with my homelab.
+							and rock climb.
 						</Text>
 					</Box>
 				</Stack>
