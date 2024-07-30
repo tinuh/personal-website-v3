@@ -40,14 +40,15 @@ const Home: NextPage = () => {
 							/>
 						</Heading>
 						<Text fontSize={"1rem"}>
-							I'm an incoming freshman studying Computer Science at the {""}
+							I&apos;m an incoming freshman studying Computer Science at the{" "}
+							{""}
 							<a
 								href="https://umd.edu"
 								target="blank"
 								className={`link link-${colorMode}`}
 							>
 								University of Maryland
-							</a>{" "}
+							</a>
 							, with a passion for all things tech. My current interests include
 							software engineering, data analytics, and server management. I
 							love being presented with a good challenge and having to research
