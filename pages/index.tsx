@@ -39,8 +39,8 @@ const Home: NextPage = () => {
 								}}
 							/>
 						</Heading>
-						<Text fontSize={"1.3rem"}>
-							I&apos;m a rising freshman studying Computer Science at the {""}
+						<Text fontSize={"1rem"}>
+							I'm an incoming freshman studying Computer Science at the {""}
 							<a
 								href="https://umd.edu"
 								target="blank"
@@ -48,10 +48,13 @@ const Home: NextPage = () => {
 							>
 								University of Maryland
 							</a>{" "}
-							interested in all things tech. I&apos;m interested in full-stack
-							web development, engineering, server management, and a variety of
-							other topics. In my spare time, I like to play ultimate frisbee
-							and rock climb.
+							, with a passion for all things tech. My current interests include
+							software engineering, data analytics, and server management. I
+							love being presented with a good challenge and having to research
+							and engineer creative solutions. In my free time, I like
+							maintaining my home lab and building software I find useful.
+							Beyond computers, I also enjoy playing ultimate frisbee and rock
+							climbing.
 						</Text>
 					</Box>
 				</Stack>
