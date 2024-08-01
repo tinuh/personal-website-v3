@@ -49,13 +49,12 @@ const Home: NextPage = () => {
 							>
 								University of Maryland
 							</a>
-							, with a passion for all things tech. My current interests include
-							software engineering, data analytics, and server management. I
-							love being presented with a good challenge and having to research
-							and engineer creative solutions. In my free time, I like
-							maintaining my home lab and building software I find useful.
-							Beyond computers, I also enjoy playing ultimate frisbee and rock
-							climbing.
+							, with a strong passion for technology. My current interests lie
+							in software engineering, data analytics, and server management. I
+							thrive on tackling challenges and enjoy researching and
+							engineering creative solutions. In my free time, I maintain a home
+							lab and build software I find useful. Beyond computers, I also
+							enjoy playing ultimate frisbee and rock climbing.
 						</Text>
 					</Box>
 				</Stack>
