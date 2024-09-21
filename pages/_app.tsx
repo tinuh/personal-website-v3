@@ -7,6 +7,7 @@ import { Box } from "@chakra-ui/layout";
 import Head from "next/head";
 import Background from "../components/Background";
 import Nav from "../components/Nav";
+import { Vector3 } from "three";
 
 const config = {
 	initialColorMode: "dark",
@@ -35,33 +36,33 @@ const theme = extendTheme({
 });
 
 interface blobType {
-	pos: number[];
+	pos: Vector3;
 	color: string;
 }
 
 const blobs: blobType[] = [
 	{
-		pos: [
+		pos: new Vector3(
 			Math.random() * 10 - 5,
 			Math.random() * 10 - 5,
 			Math.random() * 10 - 5,
-		],
+		),
 		color: "#02a8a3",
 	},
 	{
-		pos: [
+		pos: new Vector3(
 			Math.random() * 10 - 5,
 			Math.random() * 10 - 5,
 			Math.random() * 10 - 5,
-		],
+		),
 		color: "#ed685f",
 	},
 	{
-		pos: [
+		pos: new Vector3(
 			Math.random() * 10 - 5,
 			Math.random() * 10 - 5,
 			Math.random() * 10 - 5,
-		],
+		),
 		color: "#9f4bc9",
 	},
 ];

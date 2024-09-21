@@ -1,11 +1,11 @@
 import React from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, Vector3 } from "@react-three/fiber";
 import Blob from "./Blob";
 import { color, useColorMode } from "@chakra-ui/react";
 import { OrbitControls, PresentationControls } from "@react-three/drei";
 
 interface blobType {
-	pos: number[];
+	pos: Vector3
 	color: string;
 }
 

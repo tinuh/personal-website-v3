@@ -1,8 +1,9 @@
 import React from "react";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { useColorMode } from "@chakra-ui/react";
+import { Vector3 } from "@react-three/fiber";
 
-export default function Blob(props: {pos?: number[], color?: string}) {
+export default function Blob(props: {pos?: Vector3, color?: string}) {
   const { colorMode } = useColorMode();
   const { pos, color } = props;
 
