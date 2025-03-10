@@ -25,7 +25,7 @@ const Home: NextPage = () => {
 								aspectRatio: "1/1",
 							}}
 							alt="Personal Photo"
-							src="/assets/professional.png"
+							src="/assets/professional.jpg"
 						/>
 					</Box>
 					<Box>
