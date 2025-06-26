@@ -114,6 +114,8 @@ export default function Creations(props: { data: creationType[] }) {
 										<a target="blank" href={creation.fields.URL}>
 											<Image
 												borderRadius={"10px"}
+												// can you make the aspectRatio="16/9"
+												aspectRatio="32/15"
 												w="100%"
 												objectFit={"cover"}
 												src={creation.fields.Image}
