@@ -40,7 +40,7 @@ const Home: NextPage = () => {
 							/>
 						</Heading>
 						<Text fontSize={"1rem"}>
-							I&apos;m a rising junior studying Computer Science & Economics at
+							I&apos;m a junior studying Computer Science & Economics at
 							the {""}
 							<a
 								href="https://umd.edu"
